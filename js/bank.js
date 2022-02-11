@@ -1,4 +1,4 @@
-// reduce repeated code using function 
+// reduce repeated code using function deposit & withdraw value 
 function getInputValue(inputValue) {
     const inputAmount = document.getElementById(inputValue);
     const inputAmountText = inputAmount.value;
@@ -9,17 +9,27 @@ function getInputValue(inputValue) {
     return amountValue;
 }
 
+// total deposit & withdraw calculation using  function 
+function totalCashInOut(inputField, inputAmount) {
+    const totalInput = document.getElementById(inputField);
+    const totalInputText = totalInput.innerText;
+    const previousInputAmount = parseFloat(totalInputText)
+
+    const newInputAmount = previousInputAmount + inputAmount;
+    totalInput.innerText = newInputAmount;
+}
 
 // get deposit-btn 
 document.getElementById('deposit-btn').addEventListener('click', function () {
     const depositAmount = getInputValue('deposit-input');
 
     //total deposit calculation 
-    const totalDeposit = document.getElementById('total-deposit');
+    /* const totalDeposit = document.getElementById('total-deposit');
     const previousDepositAmount = totalDeposit.innerText;
     const newDepositAmount = parseFloat(previousDepositAmount) + depositAmount;
 
-    totalDeposit.innerText = newDepositAmount;
+    totalDeposit.innerText = newDepositAmount; */
+    totalCashInOut('total-deposit', depositAmount)
 
     // total balance calculation 
     const totalBalance = document.getElementById('total-balance');
@@ -34,10 +44,11 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     const withdrawAmount = getInputValue('withdraw-input');
 
     //totalWithdraw 
-    const totalWithdraw = document.getElementById('total-withdraw');
+    /* const totalWithdraw = document.getElementById('total-withdraw');
     const previousWithdraw = totalWithdraw.innerText;
     const newTotalWithdraw = parseFloat(previousWithdraw) + withdrawAmount;
-    totalWithdraw.innerText = newTotalWithdraw;
+    totalWithdraw.innerText = newTotalWithdraw; */
+    totalCashInOut('total-withdraw', withdrawAmount)
 
     // total balance calculation after withdraw  
     const totalBalance = document.getElementById('total-balance');
