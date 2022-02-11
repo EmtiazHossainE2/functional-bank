@@ -36,6 +36,7 @@ function totalbalance(amount, isAdition) {
 document.getElementById('deposit-btn').addEventListener('click', function () {
 
     const depositAmount = getInputValue('deposit-input');
+
     if (depositAmount > 0) {
         totalCashInOut('total-deposit', depositAmount)
         totalbalance(depositAmount, true)
@@ -43,6 +44,12 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     else {
         alert('Enter positive number')
     }
+    // 
+    /* const number = document.getElementById('deposit-input').value;
+    if (number.includes('-')) {
+        alert('Please enter a valid number');
+        return
+    } */
 
 
 })
@@ -51,9 +58,16 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 document.getElementById('withdraw-btn').addEventListener('click', function () {
 
     const withdrawAmount = getInputValue('withdraw-input');
-    if (withdrawAmount > 0) {
+    // for error handle  
+    const totalBalance = document.getElementById('total-balance');
+    const currentbalanceText = totalBalance.innerText;
+    const currentBalance = parseFloat(currentbalanceText);
+    if (withdrawAmount > 0 && withdrawAmount < currentBalance) {
         totalCashInOut('total-withdraw', withdrawAmount)
         totalbalance(withdrawAmount, false)
+    }
+    else if (withdrawAmount > 0 && withdrawAmount > currentBalance) {
+        alert('You dont have sufficient balance ')
     }
     else {
         alert('Enter positive number ')
