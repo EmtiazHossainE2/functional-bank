@@ -36,8 +36,14 @@ function totalbalance(amount, isAdition) {
 document.getElementById('deposit-btn').addEventListener('click', function () {
 
     const depositAmount = getInputValue('deposit-input');
-    totalCashInOut('total-deposit', depositAmount)
-    totalbalance(depositAmount, true)
+    if (depositAmount > 0) {
+        totalCashInOut('total-deposit', depositAmount)
+        totalbalance(depositAmount, true)
+    }
+    else {
+        alert('Enter positive number')
+    }
+
 
 })
 
@@ -45,8 +51,14 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
 document.getElementById('withdraw-btn').addEventListener('click', function () {
 
     const withdrawAmount = getInputValue('withdraw-input');
-    totalCashInOut('total-withdraw', withdrawAmount)
-    totalbalance(withdrawAmount, false)
+    if (withdrawAmount > 0) {
+        totalCashInOut('total-withdraw', withdrawAmount)
+        totalbalance(withdrawAmount, false)
+    }
+    else {
+        alert('Enter positive number ')
+    }
+
 
 })
 
