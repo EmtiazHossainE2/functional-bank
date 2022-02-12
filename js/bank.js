@@ -2,6 +2,13 @@
 function getInputValue(inputValue) {
     const inputAmount = document.getElementById(inputValue);
     const inputAmountText = inputAmount.value;
+
+    //icca moto value jeno na dite pare tai sobar last e ei code korci 
+    if (inputAmountText.includes('-')) {
+        alert('Please enter a valid number');
+        return;
+    }
+    //
     const amountValue = parseFloat(inputAmountText);
 
     //remove value 
@@ -44,12 +51,8 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     else {
         alert('Enter positive number')
     }
-    // 
-    /* const number = document.getElementById('deposit-input').value;
-    if (number.includes('-')) {
-        alert('Please enter a valid number');
-        return
-    } */
+
+
 
 
 })
@@ -72,7 +75,6 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
     else {
         alert('Enter positive number ')
     }
-
 
 })
 
